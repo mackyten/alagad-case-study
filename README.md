@@ -73,7 +73,7 @@ flowchart LR
 ## Process and quality
 
 - A written design system and UI specification for the web client, with a conformance checklist, so screens are built to rules rather than taste.
-- Every change is a tracked task with acceptance notes; finished tasks are archived with what was verified.
+- Every change is a tracked task; finished tasks are archived with a record of what was verified.
 - Pure domain logic is separated from UI and storage so it can be unit tested without a device.
 
 ## By the numbers
