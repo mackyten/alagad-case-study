@@ -14,7 +14,7 @@ Teachers in large public-school classes (40 to 50 students is normal) spend hour
   </tr>
 </table>
 
-<sub>Screenshots use sample data (a fictional teacher and school). More in [`assets/screenshots/`](assets/screenshots).</sub>
+<sub>Mobile app. Screenshots use sample data (a fictional teacher and school). More in [`assets/screenshots/`](assets/screenshots).</sub>
 
 ## What it does
 
@@ -28,6 +28,30 @@ Teachers in large public-school classes (40 to 50 students is normal) spend hour
 | **Gawain** | Offline activity bank and an AI assistant for learning materials |
 | **Konekta** | Parent messaging log |
 | **Roster & Sync** | School year, sections and students; conflict inbox; settings and app lock |
+
+## The web client
+
+The same product also runs in the browser, live at [alagad.web.app](https://alagad.web.app/) (sign-in required). It is a React, TypeScript and Vite single-page app on the same backend, built for the desktop: a sidebar shell, a class workspace per section (grades, attendance, behaviour, seating, plans, forms, messages), and keyboard shortcuts for fast entry.
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/web-01-home.jpg" alt="Web home: next action for the class, week plan progress and upcoming dates" width="480"><br><sub>Home: the next thing to do for a class</sub></td>
+    <td><img src="assets/screenshots/web-02-attendance.jpg" alt="Web attendance overview with monthly rate and school-day strip" width="480"><br><sub>Attendance: everyone starts present, mark the exceptions</sub></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/web-03-seating-chart.jpg" alt="Web seating chart with an unassigned learner list and a desk grid" width="480"><br><sub>Seating chart for a 50-learner class</sub></td>
+    <td><img src="assets/screenshots/web-04-all-tools.jpg" alt="Web all-tools page listing every module" width="480"><br><sub>All tools: every module in one place</sub></td>
+  </tr>
+</table>
+
+<sub>Demo account with fictional teacher and learner names.</sub>
+
+What makes the web client more than a port:
+
+- **Shared rules, not a rewrite.** Grade computation, roster parsing and the sync merge rules are plain TypeScript that runs in the browser and in the serverless functions, and each is checked against the Dart implementation with golden fixtures.
+- **Honest sync states.** The header always says one of four things: Saved, Saving, Offline with a count of waiting changes, or Conflict with a count to review.
+- **Features ship behind flags.** Write surfaces such as seating, quiz papers and evidence photos were enabled one at a time, and a surface that is off is hidden rather than shown disabled.
+- **A written design system.** Tokens, component states, layout rules and a per-screen spec with a conformance checklist, enforced by a test that fails when the spec and the CSS variables drift.
 
 ## How it is built
 
